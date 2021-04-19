@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutSoal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_bg"
+    tools:context=".view.siswa.soal.SoalFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp">
+
+        <ImageButton
+            android:id="@+id/btnClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_close"
+            android:tint="@color/abu_abu"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCurrentLevel"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Level 1" />
+
+        <TextView
+            android:id="@+id/tvTotalLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/tvCurrentLevel"
+            android:textColor="@color/abu_abu"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvCurrentLevel"
+            app:layout_constraintStart_toEndOf="@+id/tvCurrentLevel"
+            app:layout_constraintTop_toTopOf="@+id/tvCurrentLevel"
+            tools:text="/26" />
+
+        <ProgressBar
+            android:id="@+id/pbLevel"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvCurrentLevel"
+            android:layout_marginTop="24dp"
+            android:indeterminate="false"
+            android:progressBackgroundTint="#1A000000"
+            android:progressDrawable="@drawable/rounded_progressbar"
+            android:progressTint="@color/colorProgress"
+            app:layout_constraintTop_toBottomOf="@+id/tvCurrentLevel"
+            tools:layout_editor_absoluteX="16dp"
+            tools:progress="60" />
+
+        <LinearLayout
+            android:id="@+id/layoutSoalView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pbLevel">
+
+            <RelativeLayout
+                android:id="@+id/layoutVideoView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <com.google.android.exoplayer2.ui.PlayerView
+                    android:id="@+id/videoView"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:background="@color/black"
+                    app:resize_mode="fit" />
+
+                <ProgressBar
+                    android:id="@+id/pbVideo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layoutImageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/imgSoal"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:contentDescription="Image" />
+
+                <ProgressBar
+                    android:id="@+id/pbImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_progressbar"
+            android:padding="12dp"
+            app:layout_constraintTop_toBottomOf="@+id/layoutSoalView"
+            tools:layout_editor_absoluteX="16dp">
+
+            <ImageView
+                android:id="@+id/btnPlayVoice"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_play" />
+
+            <TextView
+                android:id="@+id/tvCurrentTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="6dp"
+                android:layout_toEndOf="@id/btnPlayVoice"
+                android:text="@string/time_zero" />
+
+            <SeekBar
+                android:id="@+id/seekBarVoice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="6dp"
+                android:layout_toStartOf="@id/tvTotalDuration"
+                android:layout_toEndOf="@id/tvCurrentTime" />
+
+            <TextView
+                android:id="@+id/tvTotalDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                tools:text="01:00" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/lOptions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rl">
+
+            <TextView
+                android:id="@+id/tvOptionA"
+                style="@style/CustomTextViewRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:background="@drawable/default_option_border_bg"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textSize="18sp"
+                tools:text="A" />
+
+            <TextView
+                android:id="@+id/tvOptionB"
+                style="@style/CustomTextViewRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:background="@drawable/default_option_border_bg"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textSize="18sp"
+                tools:text="B" />
+
+            <TextView
+                android:id="@+id/tvOptionC"
+                style="@style/CustomTextViewRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:background="@drawable/default_option_border_bg"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textSize="18sp"
+                tools:text="C" />
+
+            <TextView
+                android:id="@+id/tvOptionD"
+                style="@style/CustomTextViewRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:background="@drawable/default_option_border_bg"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textSize="18sp"
+                tools:text="D" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnNextSoal"
+            style="@style/CustomTextViewBoldButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/button_corners"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="12dp"
+            android:text="@string/submit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lOptions" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

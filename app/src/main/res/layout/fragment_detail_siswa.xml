@@ -1,0 +1,193 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primaryDark"
+    android:orientation="vertical"
+    tools:context=".view.guru.siswa.detail.DetailSiswaFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:titleTextColor="@color/white" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgSiswa"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_below="@id/pbLoadingDetailSiswa"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/no_profile_images"
+                app:civ_border_overlay="true" />
+
+            <TextView
+                android:id="@+id/tvNamaSiswa"
+                style="@style/CustomTextViewBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imgSiswa"
+                android:layout_marginTop="21dp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:maxLines="1"
+                android:textAlignment="center"
+                android:textSize="28sp"
+                tools:text="Sulistiyo" />
+
+            <TextView
+                android:id="@+id/tvKelasSiswa"
+                style="@style/CustomTextViewRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvNamaSiswa"
+                android:layout_marginTop="8dp"
+                android:lines="1"
+                android:maxLines="1"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                tools:text="Kelas 2" />
+
+            <TextView
+                android:id="@+id/tvLevelSiswa"
+                style="@style/CustomTextViewRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvKelasSiswa"
+                android:layout_marginTop="8dp"
+                android:lines="1"
+                android:maxLines="1"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                tools:text="Chapter 2 | Level 2" />
+
+            <Button
+                android:id="@+id/btnEditSiswa"
+                style="@style/CustomTextViewBoldButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvLevelSiswa"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="@string/edit_profile_siswa" />
+
+            <LinearLayout
+                android:id="@+id/layoutNilaiSiswa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnEditSiswa"
+                android:layout_marginTop="40dp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/CustomTextViewRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nilai_siswa"
+                    android:textColor="@color/black"
+                    android:textSize="22sp" />
+
+                <ProgressBar
+                    android:id="@+id/pbNilaiSiswa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="12dp" />
+
+                <LinearLayout
+                    android:id="@+id/notFoundLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center"
+                        app:lottie_autoPlay="true"
+                        app:lottie_rawRes="@raw/empty" />
+
+                    <TextView
+                        android:id="@+id/messageNotFound"
+                        style="@style/CustomTextViewRegular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="16dp"
+                        android:textAlignment="center"
+                        tools:text="Data tidak ditemukan" />
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvNilaiSiswa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:overScrollMode="never"
+                    android:visibility="gone"
+                    tools:listitem="@layout/items_nilai_siswa" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutNilaiRataSiswa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layoutNilaiSiswa"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <TextView
+                    style="@style/CustomTextViewRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nilai_rata_rata_siswa"
+                    android:textColor="@color/black"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/tvNilaiRataRata"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="12dp"
+                    android:background="@color/teal_700"
+                    android:padding="12dp"
+                    android:textAlignment="center"
+                    android:textSize="38sp"
+                    tools:text="32"/>
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/pbLoadingDetailSiswa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>
+

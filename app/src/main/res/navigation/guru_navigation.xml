@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/guru_navigation"
+    app:startDestination="@id/homeGuruFragment">
+
+    <fragment
+        android:id="@+id/siswaFragment"
+        android:name="com.kontakanprojects.apptkslb.view.guru.siswa.SiswaFragment"
+        android:label="siswa_fragment"
+        tools:layout="@layout/fragment_siswa">
+        <action
+            android:id="@+id/action_siswaFragment_to_detailSiswaFragment"
+            app:destination="@id/detailSiswaFragment" />
+        <argument
+            android:name="isShowAllSiswa"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="idMapel"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="idKelas"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeGuruFragment"
+        android:name="com.kontakanprojects.apptkslb.view.guru.home.HomeGuruFragment"
+        android:label="home_guru_fragment"
+        tools:layout="@layout/fragment_home_guru">
+        <action
+            android:id="@+id/action_homeGuruFragment_to_chapterFragment"
+            app:destination="@id/chapterFragment" />
+        <action
+            android:id="@+id/action_homeGuruFragment_to_profileGuruFragment"
+            app:destination="@id/profileGuruFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeGuruFragment_to_chooseSiswaFragment"
+            app:destination="@id/chooseSiswaFragment" />
+        <action
+            android:id="@+id/action_homeGuruFragment_to_kelasFragment"
+            app:destination="@id/kelasFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailSiswaFragment"
+        android:name="com.kontakanprojects.apptkslb.view.guru.siswa.detail.DetailSiswaFragment"
+        android:label="detail_siswa_fragment"
+        tools:layout="@layout/fragment_detail_siswa">
+        <action
+            android:id="@+id/action_detailSiswaFragment_to_manageSiswaFragment"
+            app:destination="@id/manageSiswaFragment" />
+        <argument
+            android:name="dataSiswa"
+            app:argType="com.kontakanprojects.apptkslb.db.Siswa" />
+    </fragment>
+    <fragment
+        android:id="@+id/chapterFragment"
+        android:name="com.kontakanprojects.apptkslb.view.guru.chapter.ChapterFragment"
+        android:label="chapter_fragment"
+        tools:layout="@layout/fragment_chapter">
+        <argument
+            android:name="isUpload"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_chapterFragment_to_chooseUploadFragment"
+            app:destination="@id/chooseUploadFragment" />
+        <argument
+            android:name="idMapel"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseUploadFragment"
+        android:name="com.kontakanprojects.apptkslb.view.guru.uploadmateri.ChooseUploadFragment"
+        android:label="choose_upload_fragment"
+        tools:layout="@layout/fragment_choose_upload">
+        <argument
+            android:name="idChapter"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_chooseUploadFragment_to_uploadSoalFragment"
+            app:destination="@id/uploadSoalFragment" />
+        <action
+            android:id="@+id/action_chooseUploadFragment_to_soalLevelFragment"
+            app:destination="@id/soalLevelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/uploadSoalFragment"
+        android:name="com.kontakanprojects.apptkslb.view.guru.uploadmateri.UploadSoalFragment"
+        android:label="upload_soal_fragment"
+        tools:layout="@layout/activity_upload_soal_intro">
+        <argument
+            android:name="idChapter"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/soalLevelFragment"
+        android:name="com.kontakanprojects.apptkslb.view.guru.uploadmateri.soal.SoalLevelFragment"
+        android:label="fragment_soal_level"
+        tools:layout="@layout/fragment_soal_level">
+        <argument
+            android:name="idChapter"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_soalLevelFragment_to_chooseUploadSoalFragment"
+            app:destination="@id/chooseUploadSoalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/manageChapterFragment"
+        android:name="com.kontakanprojects.apptkslb.view.guru.kelas.mapel.chapter.managechapter.ManageChapterFragment"
+        android:label="fragment_manage_chapter"
+        tools:layout="@layout/fragment_manage_chapter">
+        <argument
+            android:name="resultChapter"
+            android:defaultValue="@null"
+            app:argType="com.kontakanprojects.apptkslb.model.chapter.ResultChapter"
+            app:nullable="true" />
+        <argument
+            android:name="type"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="idMapel"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileGuruFragment"
+        android:name="com.kontakanprojects.apptkslb.view.guru.profile.ProfileGuruFragment"
+        android:label="fragment_profile_guru"
+        tools:layout="@layout/fragment_profile_guru" />
+    <fragment
+        android:id="@+id/chooseSiswaFragment"
+        android:name="com.kontakanprojects.apptkslb.view.guru.siswa.choose.ChooseSiswaFragment"
+        android:label="fragment_choose_siswa"
+        tools:layout="@layout/fragment_choose_siswa" >
+        <action
+            android:id="@+id/action_chooseSiswaFragment_to_siswaFragment"
+            app:destination="@id/siswaFragment" />
+        <argument
+            android:name="idMapel"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="idKelas"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_chooseSiswaFragment_to_kelasFragment"
+            app:destination="@id/kelasFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/manageSiswaFragment"
+        android:name="com.kontakanprojects.apptkslb.view.guru.siswa.detail.managesiswa.ManageSiswaFragment"
+        android:label="fragment_manage_siswa"
+        tools:layout="@layout/fragment_manage_siswa" >
+        <argument
+            android:name="resultsDetailSiswa"
+            app:argType="com.kontakanprojects.apptkslb.model.siswa.ResultDetailSiswa" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseUploadSoalFragment"
+        android:name="com.kontakanprojects.apptkslb.view.guru.uploadmateri.uploadsoal.choose.ChooseUploadSoalFragment"
+        android:label="fragment_choose_upload_soal"
+        tools:layout="@layout/fragment_choose_upload_soal" >
+        <argument
+            android:name="idChapter"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/kelasFragment"
+        android:name="com.kontakanprojects.apptkslb.view.guru.kelas.KelasFragment"
+        android:label="fragment_kelas"
+        tools:layout="@layout/fragment_kelas" >
+        <action
+            android:id="@+id/action_kelasFragment_to_mapelFragment"
+            app:destination="@id/mapelFragment" />
+        <argument
+            android:name="isFromSiswa"
+            android:defaultValue="false"
+            app:argType="boolean" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapelFragment"
+        android:name="com.kontakanprojects.apptkslb.view.guru.kelas.mapel.MapelFragment"
+        android:label="fragment_mapel"
+        tools:layout="@layout/fragment_mapel" >
+        <argument
+            android:name="idKelas"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_mapelFragment_to_manageMapelFragment"
+            app:destination="@id/manageMapelFragment" />
+        <action
+            android:id="@+id/action_mapelFragment_to_chapterKelasFragment"
+            app:destination="@id/chapterKelasFragment" />
+        <argument
+            android:name="isFromSiswa"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_mapelFragment_to_siswaFragment"
+            app:destination="@id/siswaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/manageMapelFragment"
+        android:name="com.kontakanprojects.apptkslb.view.guru.kelas.mapel.managemapel.ManageMapelFragment"
+        android:label="fragment_manage_mapel"
+        tools:layout="@layout/fragment_manage_mapel" >
+        <argument
+            android:name="idKelas"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="resultsMapel"
+            android:defaultValue="@null"
+            app:argType="com.kontakanprojects.apptkslb.model.mapel.ResultsMapel"
+            app:nullable="true" />
+        <argument
+            android:name="type"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/chapterKelasFragment"
+        android:name="com.kontakanprojects.apptkslb.view.guru.kelas.mapel.chapter.ChapterKelasFragment"
+        android:label="fragment_chapter_kelas"
+        tools:layout="@layout/fragment_chapter_kelas" >
+        <argument
+            android:name="idMapel"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_chapterKelasFragment_to_manageChapterFragment"
+            app:destination="@id/manageChapterFragment" />
+    </fragment>
+</navigation>

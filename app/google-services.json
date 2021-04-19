@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "771154967261",
+    "project_id": "app-tk-slb",
+    "storage_bucket": "app-tk-slb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:771154967261:android:a4aee8c37c207e52fdf934",
+        "android_client_info": {
+          "package_name": "com.kontakanprojects.apptkslb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "771154967261-p8vpglfp4mv5546tkp5frmo60gbk5lkn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kontakanprojects.apptkslb",
+            "certificate_hash": "ed5588bab740bc4f6245d1c9b68e53eb8fa5d1c4"
+          }
+        },
+        {
+          "client_id": "771154967261-fppdvnj2rj4d3a1akp97rmsnredp0aou.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJxItlLgpqhkTlMoT_k8L-TMGaVKwrSA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "771154967261-fppdvnj2rj4d3a1akp97rmsnredp0aou.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

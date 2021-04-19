@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutUploadSoal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_bg"
+    android:orientation="vertical"
+    tools:context=".view.guru.uploadmateri.uploadsoal.UploadSoalActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:titleTextColor="@color/white" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <RelativeLayout
+                android:id="@+id/layoutUploadVideo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.exoplayer2.ui.PlayerView
+                    android:id="@+id/videoView"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/black"
+                    android:visibility="gone"
+                    app:resize_mode="fit" />
+
+                <ProgressBar
+                    android:id="@+id/pbVideo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    app:layout_constraintBottom_toBottomOf="@+id/videoView"
+                    app:layout_constraintEnd_toEndOf="@+id/videoView"
+                    app:layout_constraintStart_toStartOf="@+id/videoView"
+                    app:layout_constraintTop_toTopOf="@+id/videoView" />
+
+                <Button
+                    android:id="@+id/btnPickVideo"
+                    style="@style/CustomTextViewBoldButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/videoView"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/button_corners"
+                    android:padding="16dp"
+                    android:text="@string/pickvideo"
+                    android:textAllCaps="true"
+                    android:textSize="21sp" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutUploadImg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imgPreviewUpload"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:layout_marginTop="24dp"
+                    android:scaleType="fitXY"
+                    android:visibility="gone"
+                    tools:src="@drawable/img_not_found" />
+
+                <Button
+                    android:id="@+id/btnPickImage"
+                    style="@style/CustomTextViewBoldButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/button_corners"
+                    android:padding="16dp"
+                    android:text="@string/pickImage"
+                    android:textAllCaps="true"
+                    android:textSize="21sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imgPreviewUpload" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlVoice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/rounded_progressbar"
+                android:padding="12dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/btnPickImage">
+
+                <ImageView
+                    android:id="@+id/btnPlayVoice"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_play" />
+
+                <TextView
+                    android:id="@+id/tvCurrentTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="6dp"
+                    android:layout_toEndOf="@id/btnPlayVoice"
+                    android:text="@string/time_zero" />
+
+                <SeekBar
+                    android:id="@+id/seekBarVoice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="6dp"
+                    android:layout_toStartOf="@id/tvTotalDuration"
+                    android:layout_toEndOf="@id/tvCurrentTime" />
+
+                <TextView
+                    android:id="@+id/tvTotalDuration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    tools:text="01:00" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btnPickVoice"
+                style="@style/CustomTextViewBoldButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_corners"
+                android:padding="16dp"
+                android:text="@string/pickSuara"
+                android:textAllCaps="true"
+                android:textSize="21sp"
+                app:layout_constraintTop_toBottomOf="@+id/rlVoice" />
+
+            <TextView
+                android:id="@+id/dummyOpsi"
+                style="@style/CustomTextViewBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="Opsi Soal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnPickVoice" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tiOpsiA"
+                style="@style/CustomTextField"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dummyOpsi"
+                app:startIconContentDescription="Opsi A">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtOpsiA"
+                    style="@style/CustomEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/opsi_a"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tiOpsiB"
+                style="@style/CustomTextField"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:focusableInTouchMode="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tiOpsiA"
+                app:startIconContentDescription="Opsi B">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtOpsiB"
+                    style="@style/CustomEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/opsi_b"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tiOpsiC"
+                style="@style/CustomTextField"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:focusableInTouchMode="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tiOpsiB"
+                app:startIconContentDescription="Opsi C">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtOpsiC"
+                    style="@style/CustomEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/opsi_c"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tiOpsiD"
+                style="@style/CustomTextField"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:focusableInTouchMode="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tiOpsiC"
+                app:startIconContentDescription="Opsi D">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtOpsiD"
+                    style="@style/CustomEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/opsi_d"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/dummyChooseOpsi"
+                style="@style/CustomTextViewBoldButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="@string/opsi_kunci_jawaban"
+                android:textColor="@android:color/black"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tiOpsiD" />
+
+            <RadioGroup
+                android:id="@+id/rbgroupchooseopsi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/dummyChooseOpsi">
+
+                <RadioButton
+                    android:id="@+id/rbOpsiA"
+                    style="@style/CustomTextViewBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/choose_a" />
+
+                <RadioButton
+                    android:id="@+id/rbOpsiB"
+                    style="@style/CustomTextViewBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:text="@string/choose_b" />
+
+                <RadioButton
+                    android:id="@+id/rbOpsiC"
+                    style="@style/CustomTextViewBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:text="@string/choose_c" />
+
+                <RadioButton
+                    android:id="@+id/rbOpsiD"
+                    style="@style/CustomTextViewBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:text="@string/choose_d" />
+            </RadioGroup>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnUploadSoal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/purple_500"
+                app:cardCornerRadius="21dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rbgroupchooseopsi">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:gravity="center"
+                    android:padding="8dp">
+
+                    <ProgressBar
+                        android:id="@+id/pbUploadSoal"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/circle_shape_progressbar"
+                        android:indeterminate="false"
+                        android:progressDrawable="@drawable/circle_progressbar"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tvUploadSoal"
+                        style="@style/CustomTextViewBoldButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/upload_soal"
+                        android:textAllCaps="true" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>

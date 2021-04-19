@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <external-path
+        name="images"
+        path="Android/data/com.kontakanprojects.apptkslb/files/Pictures" />
+
+    // my_images // *
+</paths>

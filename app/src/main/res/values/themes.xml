@@ -1,0 +1,75 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.AppTKSLB" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryDark">@color/primaryDark</item>
+        <!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
+        <!--        <item name="colorOnPrimary">@color/white</item>-->
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <!--        <item name="colorSecondaryVariant">@color/teal_700</item>-->
+        <!--        <item name="colorOnSecondary">@color/black</item>-->
+
+        <!-- Status bar color. -->
+        <!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
+        <!-- Customize your theme here. -->
+        <item name="homeAsUpIndicator">@drawable/ic_arrow_back_ios_24dp</item>
+    </style>
+
+    <!--    custom background edittext-->
+    <style name="CustomTextField" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColorHint">@android:color/white</item>
+        <item name="boxCornerRadiusBottomEnd">21dp</item>
+        <item name="boxCornerRadiusBottomStart">21dp</item>
+        <item name="boxCornerRadiusTopEnd">21dp</item>
+        <item name="boxCornerRadiusTopStart">21dp</item>
+        <item name="boxStrokeColor">@color/white</item>
+        <item name="startIconTint">@color/white</item>
+        <item name="endIconTint">@color/white</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+    </style>
+
+    <style name="CustomEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@color/blue_calm</item>
+        <item name="fontFamily">@font/droid_sans</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!--    custom text title and paragraph bold-->
+    <style name="CustomTextViewBold" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/droid_sans_bold</item>
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="CustomTextViewBoldButton" parent="CustomTextViewBold">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="CustomTextViewRegular" parent="CustomTextViewBold">
+        <item name="fontFamily">@font/droid_sans</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="CustomTextViewParagraph" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/cabin</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    // bottomsheet
+
+    <style name="BottomSheetDialogTheme" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+</resources>
