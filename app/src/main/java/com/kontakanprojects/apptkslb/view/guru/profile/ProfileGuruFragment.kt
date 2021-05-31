@@ -43,7 +43,6 @@ import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.HashMap
 
 class ProfileGuruFragment : Fragment(), View.OnClickListener {
 
@@ -145,7 +144,11 @@ class ProfileGuruFragment : Fragment(), View.OnClickListener {
                     )
                 }
             } else {
-                showMessage(requireActivity(), getString(R.string.failed), style = MotionToast.TOAST_ERROR)
+                showMessage(
+                    requireActivity(),
+                    getString(R.string.failed),
+                    style = MotionToast.TOAST_ERROR
+                )
             }
         })
     }
@@ -230,13 +233,21 @@ class ProfileGuruFragment : Fragment(), View.OnClickListener {
                     tvUiUpdated = tvKelasGuru
                     tvUiUpdated2 = tvMapelGuru
                     // get id spinner
-                    showBottomSheet(param = "id_mapel", isEditProfile = true, isEditKelasAndMapel = true)
+                    showBottomSheet(
+                        param = "id_mapel",
+                        isEditProfile = true,
+                        isEditKelasAndMapel = true
+                    )
                 }
                 R.id.layoutMapel -> {
                     tvUiUpdated = tvKelasGuru
                     tvUiUpdated2 = tvMapelGuru
                     // get id spinner
-                    showBottomSheet(param = "id_mapel", isEditProfile = true, isEditKelasAndMapel = true)
+                    showBottomSheet(
+                        param = "id_mapel",
+                        isEditProfile = true,
+                        isEditKelasAndMapel = true
+                    )
                 }
             }
         }
@@ -275,7 +286,8 @@ class ProfileGuruFragment : Fragment(), View.OnClickListener {
                         activity?.findViewById(R.id.bottomSheetEditProfile)
                     ) // layout edit profile
 
-                    val layout = bottomSheetView.findViewById<RelativeLayout>(R.id.layoutEditProfile)
+                    val layout =
+                        bottomSheetView.findViewById<RelativeLayout>(R.id.layoutEditProfile)
                     layout.visibility = View.VISIBLE
                 }
             }
@@ -368,8 +380,10 @@ class ProfileGuruFragment : Fragment(), View.OnClickListener {
         bottomSheetDialog.show()
     }
 
-    private fun save(edtInput: TextInputLayout?, itemProfile: String?, param: String?,
-                     isEditKelasAndMapel: Boolean = false, isEditPassword: Boolean = false) {
+    private fun save(
+        edtInput: TextInputLayout?, itemProfile: String?, param: String?,
+        isEditKelasAndMapel: Boolean = false, isEditPassword: Boolean = false
+    ) {
         // save data
         val btnSave: Button = bottomSheetView.findViewById(R.id.btnSave)
         btnSave.setOnClickListener {
@@ -580,7 +594,11 @@ class ProfileGuruFragment : Fragment(), View.OnClickListener {
                             View.VISIBLE
                     }
                 } else {
-                    showMessage(requireActivity(), getString(R.string.failed), style = MotionToast.TOAST_ERROR)
+                    showMessage(
+                        requireActivity(),
+                        getString(R.string.failed),
+                        style = MotionToast.TOAST_ERROR
+                    )
                 }
             })
     }

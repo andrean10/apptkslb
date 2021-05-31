@@ -14,6 +14,7 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
+import java.util.*
 
 
 interface ApiService {
@@ -211,12 +212,12 @@ interface ApiService {
     @GET("guru/{id}")
     fun detailGuru(@Path("id") idGuru: Int): Call<ResponseDetailGuru>
 
-    @GET("siswa")
-    fun getSiswa(): Call<ResponseSiswa>
+//    @GET("siswa")
+//    fun getSiswa(): Call<ResponseSiswa>
 
     // lihat siswa berdasarkan mata pelajaran dari guru pengampu
     @GET("kelas/{id}/mapel/{idMapel}/siswa")
-    fun getMySiswa(
+    fun getSiswa(
         @Path("id") idKelas: Int,
         @Path("idMapel") idMapel: Int
     ): Call<ResponseSiswa>
@@ -248,27 +249,6 @@ interface ApiService {
 
     @GET("kelas/{id}/mapel")
     fun mapelByKelas(@Path("id") idKelas: Int): Call<ResponseMapel>
-
-    @FormUrlEncoded
-    @POST("kelas/{id}/mapel")
-    fun addMapelByKelas(
-        @Path("id") idKelas: Int,
-        @Field("nama_mapel") namaMapel: String
-    ): Call<ResponseMapel>
-
-    @FormUrlEncoded
-    @PUT("kelas/{id}/mapel/{idMapel}")
-    fun editMapelByKelas(
-        @Path("id") idKelas: Int,
-        @Path("idMapel") idMapel: Int,
-        @Field("nama_mapel") namaMapel: String
-    ): Call<ResponseMapel>
-
-    @DELETE("kelas/{id}/mapel/{idMapel}")
-    fun deleteMapelByKelas(
-        @Path("id") idKelas: Int,
-        @Path("idMapel") idMapel: Int
-    ): Call<ResponseMapel>
 
     @FormUrlEncoded
     @POST("siswa/{id}/mapel")

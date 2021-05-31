@@ -214,13 +214,16 @@ class SoalFragment : Fragment(), View.OnClickListener {
                     listSoal.addAll(results)
                     prepareSoal()
                 } else {
-                    showMessage(requireActivity(), getString(R.string.failed), response.message,
+                    showMessage(
+                        requireActivity(), getString(R.string.failed), response.message,
                         MotionToast.TOAST_ERROR
                     )
                 }
             } else {
-                showMessage(requireActivity(), getString(R.string.failed),
-                    style = MotionToast.TOAST_ERROR)
+                showMessage(
+                    requireActivity(), getString(R.string.failed),
+                    style = MotionToast.TOAST_ERROR
+                )
             }
         })
     }
@@ -263,8 +266,10 @@ class SoalFragment : Fragment(), View.OnClickListener {
                     nextLevel = 1
                 }
             } else {
-                showMessage(requireActivity(), getString(R.string.failed),
-                    style = MotionToast.TOAST_ERROR)
+                showMessage(
+                    requireActivity(), getString(R.string.failed),
+                    style = MotionToast.TOAST_ERROR
+                )
                 isSelected = true
             }
         })
@@ -279,13 +284,17 @@ class SoalFragment : Fragment(), View.OnClickListener {
 
                     observeRiwayatMapel(idSiswa, idMaapel)
                 } else {
-                    showMessage(requireActivity(), getString(R.string.failed), response.message,
-                        MotionToast.TOAST_ERROR)
+                    showMessage(
+                        requireActivity(), getString(R.string.failed), response.message,
+                        MotionToast.TOAST_ERROR
+                    )
                     isSelected = true
                 }
             } else {
-                showMessage(requireActivity(), getString(R.string.failed),
-                    style = MotionToast.TOAST_ERROR)
+                showMessage(
+                    requireActivity(), getString(R.string.failed),
+                    style = MotionToast.TOAST_ERROR
+                )
                 isSelected = true
             }
         })
@@ -309,12 +318,18 @@ class SoalFragment : Fragment(), View.OnClickListener {
                         // falsekan pilihan
                         isSelected = false
                     } else {
-                        showMessage(requireActivity(), getString(R.string.failed), response.message,
-                            MotionToast.TOAST_ERROR)
+                        showMessage(
+                            requireActivity(), getString(R.string.failed), response.message,
+                            MotionToast.TOAST_ERROR
+                        )
                         isSelected = true
                     }
                 } else {
-                    showMessage(requireActivity(), getString(R.string.failed), style = MotionToast.TOAST_ERROR)
+                    showMessage(
+                        requireActivity(),
+                        getString(R.string.failed),
+                        style = MotionToast.TOAST_ERROR
+                    )
                     isSelected = true
                 }
             })
@@ -344,8 +359,10 @@ class SoalFragment : Fragment(), View.OnClickListener {
                         isSelected = true
                     }
                 } else {
-                    showMessage(requireActivity(), getString(R.string.failed),
-                        style = MotionToast.TOAST_ERROR)
+                    showMessage(
+                        requireActivity(), getString(R.string.failed),
+                        style = MotionToast.TOAST_ERROR
+                    )
                 }
             })
         } else { // berarti diedit idnilainnya
@@ -358,12 +375,18 @@ class SoalFragment : Fragment(), View.OnClickListener {
                             toSoal.idNilai = idNilai
                             findNavController().navigate(toSoal)
                         } else {
-                            showMessage(requireActivity(), getString(R.string.failed),
-                                response.message, MotionToast.TOAST_ERROR)
+                            showMessage(
+                                requireActivity(), getString(R.string.failed),
+                                response.message, MotionToast.TOAST_ERROR
+                            )
                             isSelected = true
                         }
                     } else {
-                        showMessage(requireActivity(), getString(R.string.failed), style = MotionToast.TOAST_ERROR)
+                        showMessage(
+                            requireActivity(),
+                            getString(R.string.failed),
+                            style = MotionToast.TOAST_ERROR
+                        )
                         isSelected = true
                     }
                 })
@@ -372,24 +395,30 @@ class SoalFragment : Fragment(), View.OnClickListener {
 
     private fun observeRiwayatMapel(idSiswa: Int, idMapel: Int) {
         viewModel.addRiwayatMapelSiswa(idSiswa, idMapel).observe(viewLifecycleOwner, { response ->
-                if (response != null) {
-                    if (response.status == 201 || response.status == 200) {
-                        nextLevel++
+            if (response != null) {
+                if (response.status == 201 || response.status == 200) {
+                    nextLevel++
 
-                        // persiapkan soal baru
-                        prepareSoal()
+                    // persiapkan soal baru
+                    prepareSoal()
 
-                        // falsekan pilihan
-                        isSelected = false
-                    } else {
-                        showMessage(requireActivity(), getString(R.string.failed), response.message,
-                            MotionToast.TOAST_ERROR)
-                    }
+                    // falsekan pilihan
+                    isSelected = false
                 } else {
-                    showMessage(requireActivity(), getString(R.string.failed), style = MotionToast.TOAST_ERROR)
-                    isSelected = true
+                    showMessage(
+                        requireActivity(), getString(R.string.failed), response.message,
+                        MotionToast.TOAST_ERROR
+                    )
                 }
-            })
+            } else {
+                showMessage(
+                    requireActivity(),
+                    getString(R.string.failed),
+                    style = MotionToast.TOAST_ERROR
+                )
+                isSelected = true
+            }
+        })
     }
 
     // untuk mempersiapkan soal

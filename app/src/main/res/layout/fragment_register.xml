@@ -129,7 +129,7 @@
                 android:spinnerMode="dropdown"
                 app:smsp_hint="Kelas"
                 app:smsp_hintColor="@color/black"
-                app:smsp_hintSize="18sp"/>
+                app:smsp_hintSize="18sp" />
 
             <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
                 android:id="@+id/spinnerMapel"
@@ -140,7 +140,7 @@
                 android:visibility="gone"
                 app:smsp_hint="Mata Pelajaran"
                 app:smsp_hintColor="@color/black"
-                app:smsp_hintSize="18sp"/>
+                app:smsp_hintSize="18sp" />
 
             <Button
                 android:id="@+id/btnRegister"

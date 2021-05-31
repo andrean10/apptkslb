@@ -102,7 +102,7 @@
                             app:autoSizeMaxTextSize="100sp"
                             app:autoSizeMinTextSize="14sp"
                             app:autoSizeStepGranularity="2sp"
-                            app:autoSizeTextType="uniform"/>
+                            app:autoSizeTextType="uniform" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -144,7 +144,7 @@
                             app:autoSizeMaxTextSize="100sp"
                             app:autoSizeMinTextSize="14sp"
                             app:autoSizeStepGranularity="2sp"
-                            app:autoSizeTextType="uniform"/>
+                            app:autoSizeTextType="uniform" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>

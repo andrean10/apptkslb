@@ -178,7 +178,7 @@
                     android:padding="12dp"
                     android:textAlignment="center"
                     android:textSize="38sp"
-                    tools:text="32"/>
+                    tools:text="32" />
             </LinearLayout>
 
             <ProgressBar

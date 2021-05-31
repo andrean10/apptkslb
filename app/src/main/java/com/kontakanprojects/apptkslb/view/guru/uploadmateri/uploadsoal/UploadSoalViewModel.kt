@@ -19,15 +19,19 @@ class UploadSoalViewModel : ViewModel() {
 
     private val TAG = UploadSoalViewModel::class.simpleName
 
-    fun uploadSoal(idChapter: Int, video: MultipartBody.Part?, image: MultipartBody.Part?,
-                   soalSuara: MultipartBody.Part, params: HashMap<String, RequestBody>):
+    fun uploadSoal(
+        idChapter: Int, video: MultipartBody.Part?, image: MultipartBody.Part?,
+        soalSuara: MultipartBody.Part, params: HashMap<String, RequestBody>
+    ):
             LiveData<ResponseSoalByChapter?> {
         upload(idChapter, video, image, soalSuara, params)
         return _manageSoal
     }
 
-    fun editSoal(idChapter: Int, idSoal: Int, video: MultipartBody.Part, image: MultipartBody.Part?,
-                 soalSuara: MultipartBody.Part, params: HashMap<String, RequestBody>):
+    fun editSoal(
+        idChapter: Int, idSoal: Int, video: MultipartBody.Part, image: MultipartBody.Part?,
+        soalSuara: MultipartBody.Part, params: HashMap<String, RequestBody>
+    ):
             LiveData<ResponseSoalByChapter?> {
         ubahSoal(idChapter, idSoal, video, soalSuara, params)
         return _manageSoal
@@ -40,9 +44,12 @@ class UploadSoalViewModel : ViewModel() {
 
     private fun upload(
         idChapter: Int, video: MultipartBody.Part?, image: MultipartBody.Part?,
-        soalSuara: MultipartBody.Part, params: HashMap<String, RequestBody>) {
-        val client = ApiConfig.getApiService().addSoal(idChapter, video,
-            image, soalSuara, params)
+        soalSuara: MultipartBody.Part, params: HashMap<String, RequestBody>
+    ) {
+        val client = ApiConfig.getApiService().addSoal(
+            idChapter, video,
+            image, soalSuara, params
+        )
         client.enqueue(object : Callback<ResponseSoalByChapter> {
             override fun onResponse(
                 call: Call<ResponseSoalByChapter>,

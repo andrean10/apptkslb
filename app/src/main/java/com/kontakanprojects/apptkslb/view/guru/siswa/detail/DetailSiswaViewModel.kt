@@ -187,7 +187,8 @@ class DetailSiswaViewModel : ViewModel() {
                     val errResult = response.errorBody()?.string()
                     val status = JSONObject(errResult!!).getInt("status")
                     val message = JSONObject(errResult).getString("message")
-                    val responseRataRataNilaiSiswa = ResponseRataRataNilaiSiswa(message = message, status = status)
+                    val responseRataRataNilaiSiswa =
+                        ResponseRataRataNilaiSiswa(message = message, status = status)
                     _nilaiRataRata?.postValue(responseRataRataNilaiSiswa)
                     Log.e(TAG, "onFailure: $responseRataRataNilaiSiswa")
                 }
@@ -213,7 +214,8 @@ class DetailSiswaViewModel : ViewModel() {
                     val errResult = response.errorBody()?.string()
                     val status = JSONObject(errResult!!).getInt("status")
                     val message = JSONObject(errResult).getString("message")
-                    val responseDetailSiswa = ResponseDetailSiswa(message = message, status = status)
+                    val responseDetailSiswa =
+                        ResponseDetailSiswa(message = message, status = status)
                     _siswa?.postValue(responseDetailSiswa)
                     Log.e(TAG, "onFailure: $responseDetailSiswa")
                 }

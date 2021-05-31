@@ -38,7 +38,6 @@ import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.HashMap
 
 class ManageSiswaFragment : Fragment(), View.OnClickListener {
 
@@ -136,7 +135,11 @@ class ManageSiswaFragment : Fragment(), View.OnClickListener {
                     listKelas = result
                 }
             } else {
-                showMessage(requireActivity(), getString(R.string.failed), style = MotionToast.TOAST_ERROR)
+                showMessage(
+                    requireActivity(),
+                    getString(R.string.failed),
+                    style = MotionToast.TOAST_ERROR
+                )
             }
         })
     }
@@ -181,13 +184,13 @@ class ManageSiswaFragment : Fragment(), View.OnClickListener {
         bottomSheetDialog = BottomSheetDialog(requireContext(), R.style.BottomSheetDialogTheme)
 
         if (isEditProfile) {
-             if (isEditPassword) { // change password in profile
+            if (isEditPassword) { // change password in profile
                 bottomSheetView = LayoutInflater.from(requireContext()).inflate(
                     R.layout.bottom_sheet_editprofilepass,
                     activity?.findViewById(R.id.bottomSheetEditProfilePass)
                 )
             } else { // change all data profile but no password
-                 bottomSheetView = LayoutInflater.from(requireContext()).inflate(
+                bottomSheetView = LayoutInflater.from(requireContext()).inflate(
                     R.layout.bottom_sheet_editprofile,
                     activity?.findViewById(R.id.bottomSheetEditProfile)
                 )
@@ -195,14 +198,18 @@ class ManageSiswaFragment : Fragment(), View.OnClickListener {
                 // kondisi ketika edit kelas
                 if (isEditKelas) {
                     // visible and gone layout
-                    bottomSheetView.findViewById<RelativeLayout>(R.id.layoutEditKelas).visibility = View.VISIBLE
-                    bottomSheetView.findViewById<TextView>(R.id.titleInputMapel).visibility = View.GONE
-                    bottomSheetView.findViewById<SmartMaterialSpinner<*>>(R.id.spinnerMapel).visibility = View.GONE
+                    bottomSheetView.findViewById<RelativeLayout>(R.id.layoutEditKelas).visibility =
+                        View.VISIBLE
+                    bottomSheetView.findViewById<TextView>(R.id.titleInputMapel).visibility =
+                        View.GONE
+                    bottomSheetView.findViewById<SmartMaterialSpinner<*>>(R.id.spinnerMapel).visibility =
+                        View.GONE
 
                     // set list kelas to spinner
                     setSpinnerKelas(listKelas)
                 } else {
-                    bottomSheetView.findViewById<RelativeLayout>(R.id.layoutEditProfile).visibility = View.VISIBLE
+                    bottomSheetView.findViewById<RelativeLayout>(R.id.layoutEditProfile).visibility =
+                        View.VISIBLE
                 }
             }
         } else { // ubah foto profile
@@ -322,8 +329,10 @@ class ManageSiswaFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    private fun save(edtInput: TextInputLayout?, itemProfile: String?, param: String?,
-                     isEditKelas: Boolean = false, isEditPassword: Boolean = false) {
+    private fun save(
+        edtInput: TextInputLayout?, itemProfile: String?, param: String?,
+        isEditKelas: Boolean = false, isEditPassword: Boolean = false
+    ) {
         // save data
         val btnSave: Button = bottomSheetView.findViewById(R.id.btnSave)
         btnSave.setOnClickListener {

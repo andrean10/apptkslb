@@ -16,7 +16,6 @@ import com.kontakanprojects.apptkslb.model.guru.ResultDetailGuru
 import com.kontakanprojects.apptkslb.network.ApiConfig
 import com.kontakanprojects.apptkslb.session.UserPreference
 import com.kontakanprojects.apptkslb.utils.showMessage
-import com.kontakanprojects.apptkslb.view.auth.AuthActivity
 import www.sanju.motiontoast.MotionToast
 import java.util.*
 
@@ -95,17 +94,19 @@ class HomeGuruFragment : Fragment(), View.OnClickListener {
                 findNavController().navigate(R.id.action_homeGuruFragment_to_profileGuruFragment)
             }
             R.id.lihatSiswa -> {
-                val toChooseSiswa = HomeGuruFragmentDirections.actionHomeGuruFragmentToChooseSiswaFragment().apply {
-                    idKelas = resultDetailGuru?.idKelas ?: 0
-                    idMapel = resultDetailGuru?.idMapel ?: 0
-                }
+                val toChooseSiswa =
+                    HomeGuruFragmentDirections.actionHomeGuruFragmentToChooseSiswaFragment().apply {
+                        idKelas = resultDetailGuru?.idKelas ?: 0
+                        idMapel = resultDetailGuru?.idMapel ?: 0
+                    }
                 findNavController().navigate(toChooseSiswa)
             }
             R.id.uploadMateri -> {
-                val toChapter = HomeGuruFragmentDirections.actionHomeGuruFragmentToChapterFragment().apply {
-                    idMapel = resultDetailGuru?.idMapel ?: 0
-                    isUpload = true
-                }
+                val toChapter =
+                    HomeGuruFragmentDirections.actionHomeGuruFragmentToChapterFragment().apply {
+                        idMapel = resultDetailGuru?.idMapel ?: 0
+                        isUpload = true
+                    }
                 findNavController().navigate(toChapter)
             }
             R.id.btnLogOut -> showAlertDialog()

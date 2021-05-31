@@ -30,6 +30,8 @@ class RegisterFragment : Fragment() {
     private var idKelasFromSpinner = 0
     private var idMapelFromSpinner = 0
 
+    private var idRole = 0
+
     private val TAG = RegisterFragment::class.simpleName
 
     companion object {
@@ -56,16 +58,13 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val args = LoginFragmentArgs.fromBundle(arguments as Bundle)
-        val idRole = args.role
+        idRole = args.role
 
         with(binding) {
-            if (idRole == 1) {
-                // get data in view model
-                observeKelas()
+
+            observeKelas()
+            if (idRole == 1) { // user guru
                 observeMapel()
-                spinnerMapel.visibility = View.VISIBLE
-            } else if (idRole == 2) {
-                observeKelas()
             }
 
             edtFullname.addTextChangedListener(object : TextWatcher {
@@ -292,6 +291,8 @@ class RegisterFragment : Fragment() {
         with(binding) {
             spinnerKelas.item = itemKelas
             spinnerKelas.onItemSelectedListener = itemSelectedKelas
+
+            Log.d(TAG, "setSpinnerKelas: ${spinnerKelas.isClickable}")
         }
     }
 
@@ -301,6 +302,11 @@ class RegisterFragment : Fragment() {
             val itemKelas = parent?.selectedItem as ResultsKelas // casting to resultKelas
 
             idKelasFromSpinner = itemKelas.idKelas ?: 0
+
+            // visibility spinner mapel
+            if (idRole == 1) { // user guru
+                binding.spinnerMapel.visibility = View.VISIBLE
+            }
 
             // filter list mapel
             if (listMapel != null) {
@@ -336,8 +342,6 @@ class RegisterFragment : Fragment() {
             val itemMapel = parent?.selectedItem as ResultsMapel // casting to resultKelas
 
             idMapelFromSpinner = itemMapel.idMapel ?: 0
-
-            Log.d(TAG, "onItemSelected: $idMapelFromSpinner")
         }
 
         override fun onNothingSelected(parent: AdapterView<*>?) {

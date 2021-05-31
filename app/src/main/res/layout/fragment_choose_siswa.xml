@@ -40,6 +40,6 @@
             android:padding="16dp"
             android:text="@string/siswa_di_kelas_saya"
             android:textAllCaps="true"
-            android:textSize="21sp"/>
+            android:textSize="21sp" />
     </LinearLayout>
 </LinearLayout>

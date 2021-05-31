@@ -121,16 +121,18 @@ class ChapterSiswaFragment : Fragment() {
                     } // jika tidak set default level
 
                     val toIntroSoal =
-                        ChapterSiswaFragmentDirections.actionChapterSiswaFragmentToVideoIntroFragment().apply {
-                            idChapter = resultChapter.idChapter
-                            this.idChapterLevelSiswa = idChapterLevelSiswa
-                            idMapel = idMaapel
-                        }
+                        ChapterSiswaFragmentDirections.actionChapterSiswaFragmentToVideoIntroFragment()
+                            .apply {
+                                idChapter = resultChapter.idChapter
+                                this.idChapterLevelSiswa = idChapterLevelSiswa
+                                idMapel = idMaapel
+                            }
                     findNavController().navigate(toIntroSoal)
                 }
             }
         })
     }
+
     private fun observeNilaiSiswa(idSiswa: Int) {
         binding.progressBar.visibility = View.VISIBLE
         viewModel.nilaiSiswa(idSiswa).observe(viewLifecycleOwner, { response ->
@@ -162,8 +164,10 @@ class ChapterSiswaFragment : Fragment() {
                     }
                 } else {
                     dataNotFound()
-                    showMessage(requireActivity(), getString(R.string.failed),
-                        style = MotionToast.TOAST_ERROR)
+                    showMessage(
+                        requireActivity(), getString(R.string.failed),
+                        style = MotionToast.TOAST_ERROR
+                    )
                 }
             })
         }

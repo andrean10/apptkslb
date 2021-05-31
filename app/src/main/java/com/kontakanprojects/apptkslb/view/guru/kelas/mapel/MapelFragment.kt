@@ -1,26 +1,20 @@
 package com.kontakanprojects.apptkslb.view.guru.kelas.mapel
 
-import android.graphics.Canvas
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.kontakanprojects.apptkslb.R
 import com.kontakanprojects.apptkslb.databinding.FragmentMapelBinding
 import com.kontakanprojects.apptkslb.model.mapel.ResultsMapel
 import com.kontakanprojects.apptkslb.utils.showMessage
-import com.kontakanprojects.apptkslb.view.guru.kelas.mapel.managemapel.ManageMapelFragment
-import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 import www.sanju.motiontoast.MotionToast
 
 class MapelFragment : Fragment() {
@@ -30,7 +24,6 @@ class MapelFragment : Fragment() {
     private lateinit var mapelAdapter: MapelAdapter
 
     private var idKelas = 0
-    private var idMapel = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,25 +43,10 @@ class MapelFragment : Fragment() {
 
         val args = MapelFragmentArgs.fromBundle(arguments as Bundle)
         idKelas = args.idKelas
-        val isFromSiswa = args.isFromSiswa
 
         setToolbarTitle()
-        setAdapter(isFromSiswa)
+        setAdapter()
         observe(idKelas)
-
-        with(binding) {
-            if (isFromSiswa) {
-                fabAddMapel.visibility = View.GONE
-            }
-
-            fabAddMapel.setOnClickListener {
-                val toManageMapel =
-                    MapelFragmentDirections.actionMapelFragmentToManageMapelFragment()
-                toManageMapel.type = ManageMapelFragment.REQUEST_ADD
-                toManageMapel.idKelas = idKelas
-                findNavController().navigate(toManageMapel)
-            }
-        }
     }
 
     private fun observe(idKelas: Int) {
@@ -102,89 +80,27 @@ class MapelFragment : Fragment() {
         })
     }
 
-    private fun setAdapter(isFromSiswa: Boolean) {
+    private fun setAdapter() {
         // set adapter
         mapelAdapter = MapelAdapter()
         with(binding.rvMapel) {
             layoutManager = LinearLayoutManager(requireContext())
             val dividerItemDecoration = DividerItemDecoration(
-                requireContext(), DividerItemDecoration.VERTICAL)
+                requireContext(), DividerItemDecoration.VERTICAL
+            )
             addItemDecoration(dividerItemDecoration)
             setHasFixedSize(true)
             this.adapter = mapelAdapter
-
-            if (!isFromSiswa) {
-                val itemTouchHelper = ItemTouchHelper(simpleCallback)
-                itemTouchHelper.attachToRecyclerView(this)
-            }
         }
 
         mapelAdapter.setOnItemClickCallBack(object : MapelAdapter.OnItemClickCallBack {
             override fun onItemClicked(resultsMapel: ResultsMapel) {
-                if (isFromSiswa) { // jika routing-nya dari siswa arahkan ke list siswa
-                    val toShowListSiswa = MapelFragmentDirections.actionMapelFragmentToSiswaFragment()
-                    toShowListSiswa.idKelas = idKelas
-                    toShowListSiswa.idMapel = resultsMapel.idMapel ?: 0
-                    findNavController().navigate(toShowListSiswa)
-                } else {
-                    val toChapterKelas = MapelFragmentDirections.actionMapelFragmentToChapterKelasFragment()
-                    toChapterKelas.idMapel = resultsMapel.idMapel ?: 0
-                    findNavController().navigate(toChapterKelas)
-                }
+                val toShowListSiswa = MapelFragmentDirections.actionMapelFragmentToSiswaFragment()
+                toShowListSiswa.idKelas = idKelas
+                toShowListSiswa.idMapel = resultsMapel.idMapel ?: 0
+                findNavController().navigate(toShowListSiswa)
             }
         })
-    }
-
-    private val simpleCallback = object : ItemTouchHelper.SimpleCallback(
-        0, ItemTouchHelper.LEFT
-    ) {
-        override fun onMove(
-            recyclerView: RecyclerView,
-            viewHolder: RecyclerView.ViewHolder,
-            target: RecyclerView.ViewHolder
-        ): Boolean {
-            return false
-        }
-
-        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-            // ambil posisi data dari chapters
-            val position = viewHolder.adapterPosition
-            val dataResultMapelFragment = mapelAdapter.getData(position)
-
-            if (direction == ItemTouchHelper.LEFT) {
-                val toManageMapel = MapelFragmentDirections.actionMapelFragmentToManageMapelFragment()
-                toManageMapel.type = ManageMapelFragment.REQUEST_EDIT
-                toManageMapel.resultsMapel = dataResultMapelFragment
-                findNavController().navigate(toManageMapel)
-            }
-        }
-
-        override fun onChildDraw(
-            c: Canvas,
-            recyclerView: RecyclerView,
-            viewHolder: RecyclerView.ViewHolder,
-            dX: Float,
-            dY: Float,
-            actionState: Int,
-            isCurrentlyActive: Boolean
-        ) {
-            RecyclerViewSwipeDecorator.Builder(
-                c, recyclerView, viewHolder, dX, dY, actionState,
-                isCurrentlyActive
-            )
-                .addSwipeLeftBackgroundColor(
-                    ContextCompat.getColor(
-                        requireContext(),
-                        R.color.colorCorrect
-                    )
-                )
-                .addSwipeLeftActionIcon(R.drawable.ic_edit)
-                .create()
-                .decorate()
-
-            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-
-        }
     }
 
     private fun isDataExist(state: Boolean) {

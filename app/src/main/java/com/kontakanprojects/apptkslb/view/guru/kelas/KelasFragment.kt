@@ -53,11 +53,8 @@ class KelasFragment : Fragment() {
 
         kelasAdapter.setOnItemClickCallBack(object : KelasAdapter.OnItemClickCallBack {
             override fun onItemClicked(resultsKelas: ResultsKelas) {
-                val isFromSiswa = KelasFragmentArgs.fromBundle(arguments as Bundle).isFromSiswa
-
                 val toMapel = KelasFragmentDirections.actionKelasFragmentToMapelFragment()
                 toMapel.idKelas = resultsKelas.idKelas ?: 0
-                toMapel.isFromSiswa = isFromSiswa
                 findNavController().navigate(toMapel)
             }
         })

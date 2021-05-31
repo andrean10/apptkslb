@@ -73,8 +73,10 @@ class DetailSiswaFragment : Fragment() {
 
     private fun moveEditProfile() {
         if (resultDetailSiswa != null) {
-            val toManageSiswa = DetailSiswaFragmentDirections.
-            actionDetailSiswaFragmentToManageSiswaFragment(resultDetailSiswa!!)
+            val toManageSiswa =
+                DetailSiswaFragmentDirections.actionDetailSiswaFragmentToManageSiswaFragment(
+                    resultDetailSiswa!!
+                )
             findNavController().navigate(toManageSiswa)
         }
     }
@@ -191,7 +193,11 @@ class DetailSiswaFragment : Fragment() {
                             }
                         } else {
                             binding.tvLevelSiswa.text =
-                                getString(R.string.level_detail_siswa, "Chapter 1", resultStateSiswa.level)
+                                getString(
+                                    R.string.level_detail_siswa,
+                                    "Chapter 1",
+                                    resultStateSiswa.level
+                                )
                         }
                     } else {
                         showMessage(
@@ -236,11 +242,15 @@ class DetailSiswaFragment : Fragment() {
                     if (response.status == 200) { // berhasil hapus siswa
                         findNavController().navigateUp()
 
-                        showMessage(requireActivity(), getString(R.string.success),
-                            response.message, MotionToast.TOAST_SUCCESS)
+                        showMessage(
+                            requireActivity(), getString(R.string.success),
+                            response.message, MotionToast.TOAST_SUCCESS
+                        )
                     } else {
-                        showMessage(requireActivity(), getString(R.string.failed), response.message,
-                            MotionToast.TOAST_ERROR)
+                        showMessage(
+                            requireActivity(), getString(R.string.failed), response.message,
+                            MotionToast.TOAST_ERROR
+                        )
                     }
                 } else {
                     showMessage(
@@ -288,7 +298,7 @@ class DetailSiswaFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when (item.itemId) {
             android.R.id.home -> findNavController().navigateUp()
             R.id.delete -> showAlertDialog()
         }

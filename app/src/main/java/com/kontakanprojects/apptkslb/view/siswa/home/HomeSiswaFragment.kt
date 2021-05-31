@@ -74,7 +74,8 @@ class HomeSiswaFragment : Fragment(), View.OnClickListener {
         // response click per item chapter
         adapterSiswa.setOnItemClickCallBack(object : HomeSiswaAdapter.OnItemClickCallBack {
             override fun onItemClicked(resultMapel: ResultsMapel) {
-                val toChapterSiswa = HomeSiswaFragmentDirections.actionHomeFragmentToChapterSiswaFragment()
+                val toChapterSiswa =
+                    HomeSiswaFragmentDirections.actionHomeFragmentToChapterSiswaFragment()
                 toChapterSiswa.idMapel = resultMapel.idMapel!!
 
                 findNavController().navigate(toChapterSiswa)
@@ -92,19 +93,20 @@ class HomeSiswaFragment : Fragment(), View.OnClickListener {
     private fun observeMapel() {
         with(binding) {
             progressBar.visibility = View.VISIBLE
-            viewModel.mapel(resultDetailSiswa.idKelas?: 0).observe(viewLifecycleOwner, { response ->
-                progressBar.visibility = View.GONE
-                if (response != null) {
-                    if (response.status == 200) {
-                        if (response.results != null) {
-                            // set all value to adapter
-                            adapterSiswa.setData(response.results)
+            viewModel.mapel(resultDetailSiswa.idKelas ?: 0)
+                .observe(viewLifecycleOwner, { response ->
+                    progressBar.visibility = View.GONE
+                    if (response != null) {
+                        if (response.status == 200) {
+                            if (response.results != null) {
+                                // set all value to adapter
+                                adapterSiswa.setData(response.results)
+                            }
                         }
+                    } else {
+                        showMessage(requireActivity(), "Gagal ☹️", style = MotionToast.TOAST_ERROR)
                     }
-                } else {
-                    showMessage(requireActivity(), "Gagal ☹️", style = MotionToast.TOAST_ERROR)
-                }
-            })
+                })
         }
 
     }
@@ -126,7 +128,8 @@ class HomeSiswaFragment : Fragment(), View.OnClickListener {
                             .circleCrop()
                             .into(imgProfile)
 
-                        tvWelcome.text = getString(R.string.sayhello, getTimeDay(), resultDetailSiswa.nama)
+                        tvWelcome.text =
+                            getString(R.string.sayhello, getTimeDay(), resultDetailSiswa.nama)
 
                         observeMapel()
                     } else {

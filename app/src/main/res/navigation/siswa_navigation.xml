@@ -115,7 +115,7 @@
         android:id="@+id/chapterSiswaFragment"
         android:name="com.kontakanprojects.apptkslb.view.siswa.chapter.ChapterSiswaFragment"
         android:label="fragment_chapter_siswa"
-        tools:layout="@layout/fragment_chapter_siswa" >
+        tools:layout="@layout/fragment_chapter_siswa">
         <action
             android:id="@+id/action_chapterSiswaFragment_to_videoIntroFragment"
             app:destination="@id/videoIntroFragment" />

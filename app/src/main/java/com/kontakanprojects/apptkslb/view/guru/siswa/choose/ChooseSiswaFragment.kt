@@ -39,16 +39,17 @@ class ChooseSiswaFragment : Fragment() {
 
         with(binding) {
             btnLihatSemua.setOnClickListener {
-                val toKelas = ChooseSiswaFragmentDirections.actionChooseSiswaFragmentToKelasFragment()
-                toKelas.isFromSiswa = true
+                val toKelas =
+                    ChooseSiswaFragmentDirections.actionChooseSiswaFragmentToKelasFragment()
                 findNavController().navigate(toKelas)
             }
 
             btnLihatSiswaPerMapel.setOnClickListener {
-                val toShowMySiswa = ChooseSiswaFragmentDirections.actionChooseSiswaFragmentToSiswaFragment().apply {
-                    idKelas = idKelasArgs
-                    idMapel = idMapelArgs
-                }
+                val toShowMySiswa =
+                    ChooseSiswaFragmentDirections.actionChooseSiswaFragmentToSiswaFragment().apply {
+                        idKelas = idKelasArgs
+                        idMapel = idMapelArgs
+                    }
                 findNavController().navigate(toShowMySiswa)
             }
         }

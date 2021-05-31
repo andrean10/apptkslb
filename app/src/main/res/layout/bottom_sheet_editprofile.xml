@@ -110,7 +110,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginEnd="12dp"
             android:layout_toStartOf="@id/btnSave"
-            android:text="@string/cancelProfile"/>
+            android:text="@string/cancelProfile" />
 
         <ProgressBar
             android:id="@+id/progressBar"

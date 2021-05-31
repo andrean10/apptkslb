@@ -83,14 +83,18 @@ class ResultFragment : Fragment(), View.OnClickListener {
     }
 
     private fun prepareResult(chapter: String?, nilai: Float?, totalSoal: Int?) {
-        val reward = Random.nextInt(1,4)
+        val reward = Random.nextInt(1, 4)
         with(binding) {
 
-            val imagesReward = when(reward) {
+            val imagesReward = when (reward) {
                 REWARD_ERASER -> ResourcesCompat.getDrawable(resources, R.drawable.ic_eraser, null)
                 REWARD_BOOK -> ResourcesCompat.getDrawable(resources, R.drawable.ic_book, null)
                 REWARD_PENCIL -> ResourcesCompat.getDrawable(resources, R.drawable.ic_pencil, null)
-                REWARD_SHARPENER -> ResourcesCompat.getDrawable(resources, R.drawable.ic_sharpener, null)
+                REWARD_SHARPENER -> ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.ic_sharpener,
+                    null
+                )
                 else -> ResourcesCompat.getDrawable(resources, R.drawable.img_not_found, null)
             }
 
@@ -120,10 +124,18 @@ class ResultFragment : Fragment(), View.OnClickListener {
                     prepareResult(result.namaChapter, result.nilai, result.totalSoal)
                 } else {
                     showMessage(
-                        requireActivity(), getString(R.string.failed), response.message, MotionToast.TOAST_ERROR)
+                        requireActivity(),
+                        getString(R.string.failed),
+                        response.message,
+                        MotionToast.TOAST_ERROR
+                    )
                 }
             } else {
-                showMessage(requireActivity(), getString(R.string.failed), style = MotionToast.TOAST_ERROR)
+                showMessage(
+                    requireActivity(),
+                    getString(R.string.failed),
+                    style = MotionToast.TOAST_ERROR
+                )
             }
         })
     }
@@ -137,11 +149,18 @@ class ResultFragment : Fragment(), View.OnClickListener {
                         findNavController().navigateUp()
                     } else {
                         showMessage(
-                            requireActivity(), getString(R.string.failed), response.message, MotionToast.TOAST_ERROR
+                            requireActivity(),
+                            getString(R.string.failed),
+                            response.message,
+                            MotionToast.TOAST_ERROR
                         )
                     }
                 } else {
-                    showMessage(requireActivity(), getString(R.string.failed), style = MotionToast.TOAST_ERROR)
+                    showMessage(
+                        requireActivity(),
+                        getString(R.string.failed),
+                        style = MotionToast.TOAST_ERROR
+                    )
                 }
             })
     }

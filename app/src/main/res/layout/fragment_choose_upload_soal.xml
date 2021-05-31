@@ -41,6 +41,6 @@
             android:padding="16dp"
             android:text="@string/upload_soal_gambar"
             android:textAllCaps="true"
-            android:textSize="21sp"/>
+            android:textSize="21sp" />
     </LinearLayout>
 </RelativeLayout>

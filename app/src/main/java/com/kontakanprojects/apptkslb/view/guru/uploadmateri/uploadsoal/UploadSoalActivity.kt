@@ -146,7 +146,8 @@ class UploadSoalActivity : AppCompatActivity(), View.OnClickListener,
                     gambarPath = dataSoal!!.gambar
                     audioPath = dataSoal!!.soalSuara
                 }
-                else -> { }
+                else -> {
+                }
             }
         }
 
@@ -251,7 +252,7 @@ class UploadSoalActivity : AppCompatActivity(), View.OnClickListener,
                     val opsiD = edtOpsiD.text.toString().trim()
 
                     // check pertama
-                    when(type) {
+                    when (type) {
                         REQUEST_ADD_VIDEO -> {
                             if (videoPath.isNullOrEmpty()) {
                                 layoutUploadSoal.snackbar(MUST_PICK_VIDEO)
@@ -319,7 +320,7 @@ class UploadSoalActivity : AppCompatActivity(), View.OnClickListener,
                             var bodyImage: MultipartBody.Part? = null
                             var bodyAudio: MultipartBody.Part? = null
 
-                            when(type) {
+                            when (type) {
                                 REQUEST_ADD_VIDEO -> {
                                     Log.d(TAG, "onClick: Tipe Tambah Video")
 
@@ -338,7 +339,10 @@ class UploadSoalActivity : AppCompatActivity(), View.OnClickListener,
                                     // cek apakah user mengubah video atau audio
                                     when {
                                         isVideoAvailable && isVoiceAvailable -> {
-                                            Log.d(TAG, "onClick: User mengirim video dan audio baru")
+                                            Log.d(
+                                                TAG,
+                                                "onClick: User mengirim video dan audio baru"
+                                            )
 
                                             bodyVideo = reqFileVideo()
                                             bodyAudio = reqFileAudio()
@@ -372,7 +376,10 @@ class UploadSoalActivity : AppCompatActivity(), View.OnClickListener,
                                     // cek apakah user mengubah video atau audio
                                     when {
                                         isImageAvailable && isVoiceAvailable -> {
-                                            Log.d(TAG, "onClick: User mengirim gambar dan audio baru")
+                                            Log.d(
+                                                TAG,
+                                                "onClick: User mengirim gambar dan audio baru"
+                                            )
 
                                             bodyImage = reqFileImage()
                                             bodyAudio = reqFileAudio()
@@ -492,15 +499,21 @@ class UploadSoalActivity : AppCompatActivity(), View.OnClickListener,
                         visibilityProgress(false, "Done")
                         finish()
 
-                        showMessage(this, getString(R.string.success),
-                            "Berhasil menambahkan data soal", MotionToast.TOAST_SUCCESS)
+                        showMessage(
+                            this, getString(R.string.success),
+                            "Berhasil menambahkan data soal", MotionToast.TOAST_SUCCESS
+                        )
                     } else {
-                        showMessage(this, getString(R.string.failed), response.message,
-                            MotionToast.TOAST_ERROR)
+                        showMessage(
+                            this, getString(R.string.failed), response.message,
+                            MotionToast.TOAST_ERROR
+                        )
                     }
                 } else {
-                    showMessage(this, getString(R.string.failed),
-                        style = MotionToast.TOAST_ERROR)
+                    showMessage(
+                        this, getString(R.string.failed),
+                        style = MotionToast.TOAST_ERROR
+                    )
                 }
             })
     }
@@ -729,7 +742,12 @@ class UploadSoalActivity : AppCompatActivity(), View.OnClickListener,
                         imageUri?.let { startCrop(it) }
                     } catch (e: Exception) {
                         Log.e(TAG, "onActivityResult: ${e.message}")
-                        showMessage(this, getString(R.string.failed), e.message.toString(), MotionToast.TOAST_ERROR)
+                        showMessage(
+                            this,
+                            getString(R.string.failed),
+                            e.message.toString(),
+                            MotionToast.TOAST_ERROR
+                        )
                     }
                 }
             }
@@ -927,8 +945,10 @@ class UploadSoalActivity : AppCompatActivity(), View.OnClickListener,
     private fun permission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
             != PackageManager.PERMISSION_GRANTED ||
-            ContextCompat.checkSelfPermission(this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            )
             != PackageManager.PERMISSION_GRANTED ||
             ContextCompat.checkSelfPermission(
                 this, Manifest.permission.READ_EXTERNAL_STORAGE
@@ -953,12 +973,15 @@ class UploadSoalActivity : AppCompatActivity(), View.OnClickListener,
         if (requestCode == REQUEST_CODE_PERMISSIONS && grantResults.isNotEmpty()) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 //                dispatchCaptureImageIntent()
-            } else if(grantResults[1] == PackageManager.PERMISSION_GRANTED &&
-                grantResults[2] == PackageManager.PERMISSION_GRANTED) {
+            } else if (grantResults[1] == PackageManager.PERMISSION_GRANTED &&
+                grantResults[2] == PackageManager.PERMISSION_GRANTED
+            ) {
                 // load video or load images
             } else {
-                showMessage(this, "Failed", "Not All Permission Granted!",
-                    MotionToast.TOAST_WARNING)
+                showMessage(
+                    this, "Failed", "Not All Permission Granted!",
+                    MotionToast.TOAST_WARNING
+                )
             }
         }
     }

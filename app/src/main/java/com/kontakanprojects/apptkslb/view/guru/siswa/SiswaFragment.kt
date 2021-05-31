@@ -44,7 +44,6 @@ class SiswaFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val args = SiswaFragmentArgs.fromBundle(arguments as Bundle)
-        val request = args.isShowAllSiswa
         idKelas = args.idKelas
         idMapel = args.idMapel
 
@@ -64,11 +63,7 @@ class SiswaFragment : Fragment() {
                 this.adapter = siswaAdapter
             }
 
-            if (request) {
-                observeSiswa()
-            } else {
-                observeMySiswa(idKelas, idMapel)
-            }
+            observeSiswa(idKelas, idMapel)
 
             siswaAdapter.setOnItemClickCallBack(object : SiswaAdapter.OnItemClickCallBack {
                 override fun onItemClicked(resultsSiswa: ResultsSiswa) {
@@ -89,9 +84,9 @@ class SiswaFragment : Fragment() {
         }
     }
 
-    private fun observeSiswa() {
+    private fun observeSiswa(idKelas: Int, idMapel: Int) {
         with(binding) {
-            viewModel.getSiswa().observe(viewLifecycleOwner, { response ->
+            viewModel.getSiswa(idKelas, idMapel).observe(viewLifecycleOwner, { response ->
                 progressBar.visibility = View.GONE
                 if (response != null) {
                     if (response.status == 200) {
@@ -101,25 +96,11 @@ class SiswaFragment : Fragment() {
                         dataSiswaNotFound()
                     }
                 } else {
-                    showMessage(requireActivity(), getString(R.string.failed), style = MotionToast.TOAST_ERROR)
-                }
-            })
-        }
-    }
-
-    private fun observeMySiswa(idKelas: Int, idMapel: Int) {
-        with(binding) {
-            viewModel.getMySiswa(idKelas, idMapel).observe(viewLifecycleOwner, { response ->
-                progressBar.visibility = View.GONE
-                if (response != null) {
-                    if (response.status == 200) {
-                        val result = response.results
-                        siswaAdapter.setData(result)
-                    } else {
-                        dataSiswaNotFound()
-                    }
-                } else {
-                    showMessage(requireActivity(), getString(R.string.failed), style = MotionToast.TOAST_ERROR)
+                    showMessage(
+                        requireActivity(),
+                        getString(R.string.failed),
+                        style = MotionToast.TOAST_ERROR
+                    )
                 }
             })
         }

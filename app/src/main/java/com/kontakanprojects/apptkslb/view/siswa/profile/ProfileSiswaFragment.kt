@@ -176,16 +176,20 @@ class ProfileSiswaFragment : Fragment(), View.OnClickListener {
         bottomSheetDialog = BottomSheetDialog(requireContext(), R.style.BottomSheetDialogTheme)
 
         if (isEditProfile) {
-            bottomSheetView = if (isEditPassword) { // change password in profile
-                LayoutInflater.from(requireContext()).inflate(
+            if (isEditPassword) { // change password in profile
+                bottomSheetView = LayoutInflater.from(requireContext()).inflate(
                     R.layout.bottom_sheet_editprofilepass,
                     activity?.findViewById(R.id.bottomSheetEditProfilePass)
                 )
             } else { // change all data profile  but no password
-                LayoutInflater.from(requireContext()).inflate(
+                bottomSheetView = LayoutInflater.from(requireContext()).inflate(
                     R.layout.bottom_sheet_editprofile,
                     activity?.findViewById(R.id.bottomSheetEditProfile)
                 )
+
+                val layout =
+                    bottomSheetView.findViewById<RelativeLayout>(R.id.layoutEditProfile)
+                layout.visibility = View.VISIBLE
             }
         } else { // ubah foto profile
             bottomSheetView = LayoutInflater.from(requireContext()).inflate(
